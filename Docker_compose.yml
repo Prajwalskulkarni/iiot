@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  app:
+    image: 'iiot'
+    build:
+      context: .
+    container_name: app
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/iiotconnxx
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=root
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+          
+  db:
+    image: 'postgres'
+    container_name: postgres-F7M2
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
